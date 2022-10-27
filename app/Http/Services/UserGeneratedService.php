@@ -21,7 +21,7 @@ class UserGeneratedService extends BaseService
      */
     public function __construct()
     {
-        $this->model = new App\Http\Models\UserGenerated;
+        $this->model = new App\Models\UserGenerated;
         $this->repository = new App\Http\Repositories\UserGeneratedRepository;
     }
 

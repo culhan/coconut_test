@@ -5,7 +5,7 @@
 namespace App\Http\Repositories;
 
 use Request;
-use App\Http\Models\UserGenerated;
+use App\Models\UserGenerated;
 use App\Exceptions\DataEmptyException;
 use KhanCode\LaravelBaseRest\BaseRepository;
 
