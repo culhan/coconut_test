@@ -3,7 +3,7 @@
 Via Composer
 
 ``` bash
-$ composer require khancode/laravelbaserest
+$ composer update
 ```
 
 migrate
