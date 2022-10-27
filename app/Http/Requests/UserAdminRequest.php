@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserAddressDelete extends FormRequest
+class UserAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,6 +13,9 @@ class UserAddressDelete extends FormRequest
      */
     public function authorize()
     {
+        if( auth()->user()->role_id == 'A'){
+            return true;
+        }
         return false;
     }
 

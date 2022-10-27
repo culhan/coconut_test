@@ -18,9 +18,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('test', '\App\Http\Controllers\Api\TestController@test');
-
-
-
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/user', [App\Http\Controllers\Api\UserController::class, 'ApiList']);
+});
 
 include 'userGenerated.php';

@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
 </head>
 <body>
     <div id="app">
@@ -52,18 +52,21 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-toggle" href="/userAddressCreate" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Add Address
-                                </a>
-                            </li>
-
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>                                
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">                                    
+                                    
+                                    @if(auth()->user()->role_id == 'A')
+                                        <a class="dropdown-item" href="{{ route('userForAdmin') }}">User</a>
+                                    @endif
+
+                                    @if(auth()->user()->role_id != 'A')
+                                        <a class="dropdown-item" href="{{ route('my_address') }}">My Address</a>
+                                    @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -86,4 +89,19 @@
         </main>
     </div>
 </body>
+<script>
+    navigator.geolocation.getCurrentPosition(getLatLon);
+    var latitude
+    var longitude
+    function getLatLon(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+    }
+
+    window.addEventListener('load', function () {
+        document.querySelector("input.lat").value = latitude;
+        document.querySelector("input.lng").value = longitude;
+    })
+    
+</script>
 </html>

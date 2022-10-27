@@ -23,6 +23,28 @@ class User extends BaseModel
     ];
 
     /**
+     * admin scope
+     *
+     * @param [type] $query
+     * @return void
+     */
+    public function scopeAdmin($query)
+    {
+        return $query->where("role_id", 'A');
+    }
+
+    /**
+     * not admin scope
+     *
+     * @param [type] $query
+     * @return void
+     */
+    public function scopeNotAdmin($query)
+    {
+        return $query->where("role_id", 'U');
+    }
+
+    /**
      * [scopeGetJoin description]
      *
      * @param   [type]  $query  [$query description]
@@ -113,5 +135,9 @@ class User extends BaseModel
                     ->getSelect($data)                
                     ->getOption($data)
                     ->getUnion($data);
+    }
+
+    public function UsersDeleteRequestAddress(){
+        return $this->hasMany(UsersDeleteRequestAddress::class, 'user_id', 'id');
     }
 }

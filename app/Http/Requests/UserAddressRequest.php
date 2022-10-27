@@ -26,6 +26,14 @@ class UserAddressRequest extends FormRequest
         return [
             "address" => "required",
             "is_default"    => "in:1,0|required",
+            "lat" => [
+                'required', 
+                'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'
+            ],
+            "lng" => [
+                'required', 
+                'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'
+            ],
         ];
     }
 }

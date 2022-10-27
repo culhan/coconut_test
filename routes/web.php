@@ -22,9 +22,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/user', [App\Http\Controllers\UserController::class, 'list'])->middleware(['auth']);
-Route::get('/userAddress', [App\Http\Controllers\UserAddressController::class, 'list'])->middleware(['auth']);
-Route::get('/userAddressCreate', [App\Http\Controllers\UserAddressController::class, 'create'])->middleware(['auth']);
-Route::get('/userAddressCreateAction', [App\Http\Controllers\UserAddressController::class, 'createAction'])->middleware(['auth']);
-Route::get('/userAddressDelete/{id}', [App\Http\Controllers\UserAddressController::class, 'delete'])->middleware(['auth']);
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/userForAdmin', [App\Http\Controllers\UserController::class, 'listForAdmin'])->name('userForAdmin');
+    Route::get('/userAddress', [App\Http\Controllers\UserAddressController::class, 'list'])->name('my_address');
+    Route::get('/userAddressCreate', [App\Http\Controllers\UserAddressController::class, 'create'])->name('create_address');
+    Route::post('/userAddressCreateAction', [App\Http\Controllers\UserAddressController::class, 'createAction']);
+    Route::get('/userAddressDeleteRequest/{id}', [App\Http\Controllers\UserAddressController::class, 'deleteRequest']);
+    Route::get('/userAddress/{id}', [App\Http\Controllers\UserAddressController::class, 'userAddress']);    
+});
 
