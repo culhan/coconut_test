@@ -19,7 +19,6 @@ class UserController extends Controller
      */
     public function ApiList()
     {
-        dd('a');
         $data = User::NotAdmin()
             ->when(request('email',false), function ($query) {                
                 $query->where("email", "like", request('email')."%");
