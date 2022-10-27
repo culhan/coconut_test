@@ -34,7 +34,7 @@ email = user@user.com
 password = password
 ```
 
-live url for this test [link-live]
+[live url for this test] [link-live]
 
 ## Credits
 
