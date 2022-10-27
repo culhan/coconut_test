@@ -38,3 +38,5 @@ password = password
 ## Credits
 
 - [A'mal Sholihan][link-author]
+
+[link-author]: https://github.com/culhan
