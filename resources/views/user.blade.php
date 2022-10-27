@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="col-md-8">
-                        <form action="user">
+                        <form action="userForAdmin">
                             <input type="number" name="range" value="{{$range??''}}" style="float:right;" placeholder="range">
                             <input type="hidden" name="lat" class="lat" value="">
                             <input type="hidden" name="lng" class="lng" value="">
